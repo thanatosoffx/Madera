@@ -22,7 +22,27 @@ Tailwind + Shadcn-style UI primitives, and Framer Motion.
 Next.js 14 · TypeScript · Tailwind CSS · Shadcn-style primitives · Framer Motion
 · Supabase (Postgres + Auth) · React Hook Form · Zod · sonner · date-fns.
 
-## Getting started
+## Deploy to Vercel (one-click)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/thanatosoffx/Madera&project-name=artesania-oak-iron&repository-name=artesania-oak-iron&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&envDescription=Supabase%20project%20credentials)
+
+When importing the repo on Vercel, pick the branch
+`claude/setup-fullstack-orchestration-VXHSr` and provide the three runtime env
+vars below (the `SUPABASE_DB_URL` is only used by the local `db:push`/`db:seed`
+scripts and is not needed on Vercel):
+
+| Variable                        | Where to find it                                  |
+| ------------------------------- | ------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Supabase dashboard → Project Settings → API → URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase API settings → `anon` / `publishable`    |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Supabase API settings → `service_role` (secret)   |
+
+Before the first deploy, apply the schema and seed once via Supabase Studio
+(SQL editor): paste the contents of `supabase/schema.sql` and then
+`supabase/seed.sql`. Vercel will auto-detect Next.js, run `next build`, and
+expose a public URL on the next push.
+
+## Local development
 
 ```bash
 cp .env.local.example .env.local
