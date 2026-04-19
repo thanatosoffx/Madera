@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "db:push": "supabase db push",
+    "db:push": "psql \"$SUPABASE_DB_URL\" -f supabase/schema.sql",
     "db:seed": "psql \"$SUPABASE_DB_URL\" -f supabase/seed.sql"
   },
   "dependencies": {
